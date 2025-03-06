@@ -7,6 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Claw;
+import frc.robot.subsystems.Hanger;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -16,6 +19,10 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+
+    private final Arm ArmSubsystem = new Arm();
+  private final Claw ClawSubsystem = new Claw();
+  private final Hanger HangerSubsystem = new Hanger();
 
   private RobotContainer m_robotContainer;
 
@@ -88,7 +95,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+     ArmSubsystem.teleopPeriodic();
+ ClawSubsystem.teleopPeriodic();
+ HangerSubsystem.teleopPeriodic();
+  }
 
   @Override
   public void testInit() {
